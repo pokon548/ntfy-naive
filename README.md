@@ -10,5 +10,9 @@ It hooks `console.log` to get notification from WebSockets, then displaying a no
 3. Close this app. It will minimize to tray
 4. Get notified!
 
+## Known issues
+- It does not display tags in messages
+- Custom display name for topic is not working
+
 ## Credit
 App icon is inherited from [officials](https://github.com/binwiederhier/ntfy).
