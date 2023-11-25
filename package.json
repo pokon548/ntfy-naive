@@ -13,6 +13,10 @@
   "build": {
     "appId": "ink.pokon548.ntfy-native",
     "productName": "Ntfy Native",
+    "win": {
+      "target": "nsis",
+      "icon": "icon.png"
+    },
     "linux": {
       "maintainer": "pokon548",
       "icon": "icon.png",
