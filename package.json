@@ -1,6 +1,6 @@
 {
   "name": "ntfy-native",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Unofficial ntfy native client for win / linux",
   "author": "pokon548",
   "scripts": {
