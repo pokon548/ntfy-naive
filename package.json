@@ -1,0 +1,70 @@
+{
+  "name": "ntfy-native",
+  "version": "1.0.0",
+  "description": "Unofficial ntfy native client for linux",
+  "author": "pokon548",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build && electron-builder",
+    "knip": "knip",
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives",
+    "preview": "vite preview"
+  },
+  "build": {
+    "appId": "ink.pokon548.ntfy-native",
+    "productName": "Ntfy Native",
+    "linux": {
+      "maintainer": "pokon548",
+      "icon": "icon.png",
+      "category": "Education",
+      "target": [
+        {
+          "target": "AppImage"
+        },
+        {
+          "target": "Snap"
+        },
+        {
+          "target": "deb"
+        },
+        {
+          "target": "rpm"
+        },
+        {
+          "target": "zip"
+        }
+      ],
+      "extraResources": [
+        {
+          "from": "./build/",
+          "to": "",
+          "filter": [
+            "**/*"
+          ]
+        }
+      ]
+    }
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.24",
+    "@types/react-dom": "^18.2.8",
+    "@typescript-eslint/eslint-plugin": "^6.7.3",
+    "@typescript-eslint/parser": "^6.7.3",
+    "@vitejs/plugin-react": "^4.1.0",
+    "electron": "^27.0.0",
+    "electron-builder": "^24.6.4",
+    "eslint": "^8.50.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.3",
+    "knip": "^2.34.0",
+    "typescript": "^5.2.2",
+    "vite": "^4.4.9",
+    "vite-plugin-electron": "^0.14.1",
+    "vite-plugin-electron-renderer": "^0.14.5"
+  },
+  "main": "dist-electron/main.js"
+}
