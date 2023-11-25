@@ -1,6 +1,5 @@
 import { app, BrowserWindow, Tray, Menu, Notification, shell } from "electron";
 import path from "node:path";
-import { setup } from "electron-push-receiver";
 import { join } from "path";
 
 // The built directory structure
@@ -14,6 +13,8 @@ import { join } from "path";
 // │
 
 let win: BrowserWindow;
+let cachedId: string;
+let cachedNotification: Notification;
 let isQuiting: boolean;
 
 const gotTheLock = app.requestSingleInstanceLock();
@@ -69,8 +70,6 @@ function createWindow() {
 
   win.loadURL("https://ntfy.sh/app");
 
-  setup(win.webContents);
-
   win.webContents.on("console-message", (_event, _level, message) => {
     if (message.includes("Message received from server")) {
       const msgJson = JSON.parse(message.slice(message.indexOf("{")));
@@ -80,20 +79,24 @@ function createWindow() {
       const msg = msgJson.message;
 
       if (event == "message") {
-        new Notification({
+        cachedId = msgJson.id;
+        cachedNotification = new Notification({
           title: title ? title : topic,
           body: msg,
           icon: app.isPackaged
             ? join(process.resourcesPath, "icon.png")
             : join("build", "icon.png"),
-        })
-          .on("click", () => {
-            win.show();
-          })
-          .show();
+        });
       }
-
-      console.log(msgJson);
+    } else if (
+      message.includes("Displaying notification") &&
+      message.includes(cachedId)
+    ) {
+      cachedNotification
+        .on("click", () => {
+          win.show();
+        })
+        .show();
     }
   });
 
