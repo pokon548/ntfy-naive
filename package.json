@@ -1,11 +1,12 @@
 {
   "name": "ntfy-native",
   "version": "1.0.0",
-  "description": "Unofficial ntfy native client for linux",
+  "description": "Unofficial ntfy native client for win / linux",
   "author": "pokon548",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build && electron-builder",
+    "build:win": "tsc && vite build && electron-builder --win",
     "knip": "knip",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives",
     "preview": "vite preview"
@@ -13,6 +14,10 @@
   "build": {
     "appId": "ink.pokon548.ntfy-native",
     "productName": "Ntfy Native",
+    "win": {
+      "target": "nsis",
+      "icon": "icon.png"
+    },
     "linux": {
       "maintainer": "pokon548",
       "icon": "icon.png",

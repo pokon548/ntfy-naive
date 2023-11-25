@@ -1,4 +1,4 @@
-# Ntfy Native
+# Ntfy Naive
 A truly naive, cross-platform [ntfy](https://github.com/binwiederhier/ntfy) client that lives in your tray. Period.
 
 ## How does it works?
